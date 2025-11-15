@@ -1,6 +1,6 @@
 # Infinity Grid Duel
 
-A 6x6 strategic board game where two players compete to expand territory and capture opponent tiles.
+A 6x6 strategic board game where two players compete to expand territory and capture opponent tiles. Built with Node.js, Express, React, and TypeScript.
 
 ## Features
 
@@ -131,4 +131,4 @@ All core features are implemented:
 
 ## Contributing
 
-This project was built following a spec-driven development approach. See the `.kiro/specs/` directory for detailed requirements, design, and implementation plans.
+This project was built following a spec-driven development approach with Kiro AI. See the `.kiro/specs/` directory for detailed requirements, design, and implementation plans.
