@@ -16,6 +16,23 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({
+    name: 'Infinity Grid Duel API',
+    version: '1.0.0',
+    status: 'running',
+    endpoints: {
+      health: '/health',
+      startGame: 'POST /game/start',
+      getGameState: 'GET /game/state/:id',
+      makeMove: 'POST /game/move',
+      aiMove: 'POST /ai/move'
+    },
+    documentation: 'https://github.com/Manisha-Manhas/infinity-grid-duel'
+  });
+});
+
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ status: 'ok', message: 'Infinity Grid Duel API is running' });
