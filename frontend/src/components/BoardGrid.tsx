@@ -1,5 +1,5 @@
 import React from 'react';
-import { Board, PlayerColor } from '../types';
+import { Board } from '../types';
 
 interface BoardGridProps {
   board: Board;
