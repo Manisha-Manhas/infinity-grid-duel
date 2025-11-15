@@ -33,6 +33,3 @@ yarn-error.log*
 # Testing
 coverage/
 .nyc_output/
-
-# Kiro specs (optional - remove this line if you want to include specs)
-.kiro/
