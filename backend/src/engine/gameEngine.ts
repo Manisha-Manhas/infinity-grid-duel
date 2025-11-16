@@ -163,25 +163,72 @@ export function executeMove(state: GameState, player: PlayerColor, row: number, 
 }
 
 /**
+ * Check if a player has any valid moves available
+ */
+export function hasValidMoves(state: GameState, player: PlayerColor): boolean {
+  // If player has no tiles yet, they can place anywhere (first move)
+  if (!hasPlayerTiles(state.board, player)) {
+    // Check if there are any empty cells
+    for (let i = 0; i < 6; i++) {
+      for (let j = 0; j < 6; j++) {
+        if (isCellEmpty(state.board, i, j)) {
+          return true;
+        }
+      }
+    }
+    return false;
+  }
+  
+  // Check all empty cells to see if any are adjacent to player's tiles
+  for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < 6; j++) {
+      if (isCellEmpty(state.board, i, j) && isAdjacentToPlayerTile(state.board, player, i, j)) {
+        return true;
+      }
+    }
+  }
+  
+  return false;
+}
+
+/**
  * Detect if there's a winner or draw
  * Returns the winner ('R' or 'G'), 'draw', or null if game is still in progress
  */
 export function detectWinner(state: GameState): PlayerColor | 'draw' | null {
   // Check if board is full
-  if (!isBoardFull(state.board)) {
-    return null;
+  if (isBoardFull(state.board)) {
+    // Count tiles for each player
+    const redCount = countPlayerTiles(state.board, 'R');
+    const greenCount = countPlayerTiles(state.board, 'G');
+    
+    // Determine winner
+    if (redCount > greenCount) {
+      return 'R';
+    } else if (greenCount > redCount) {
+      return 'G';
+    } else {
+      return 'draw';
+    }
   }
   
-  // Count tiles for each player
-  const redCount = countPlayerTiles(state.board, 'R');
-  const greenCount = countPlayerTiles(state.board, 'G');
-  
-  // Determine winner
-  if (redCount > greenCount) {
-    return 'R';
-  } else if (greenCount > redCount) {
-    return 'G';
-  } else {
-    return 'draw';
+  // Check if current player has no valid moves (trapped)
+  if (!hasValidMoves(state, state.currentPlayer)) {
+    // Current player is trapped, opponent wins
+    const opponent: PlayerColor = state.currentPlayer === 'R' ? 'G' : 'R';
+    
+    // Count tiles to determine winner
+    const redCount = countPlayerTiles(state.board, 'R');
+    const greenCount = countPlayerTiles(state.board, 'G');
+    
+    if (redCount > greenCount) {
+      return 'R';
+    } else if (greenCount > redCount) {
+      return 'G';
+    } else {
+      return 'draw';
+    }
   }
+  
+  return null;
 }
