@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { GameState, GameMode, PlayerColor } from '../types';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'https://infinity-grid-duel.onrender.com';
 
 export const startGame = async (mode: GameMode): Promise<GameState> => {
   const response = await axios.post(`${API_BASE_URL}/game/start`, { mode });
