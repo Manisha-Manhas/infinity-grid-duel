@@ -2,6 +2,8 @@
 
 A 6x6 strategic board game where two players compete to expand territory and capture opponent tiles. Built with Node.js, Express, React, and TypeScript.
 
+🎮 **[Play Live Demo](https://gorgeous-griffin-920238.netlify.app/)**
+
 ## Features
 
 ✅ **Player vs Player (PvP)** - Two human players take turns  
