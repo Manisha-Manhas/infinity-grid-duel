@@ -47,9 +47,9 @@ Update the frontend to use your backend URL:
 
 1. **Edit `frontend/.env.production`**
    ```
-   VITE_API_URL=https://your-backend-url.onrender.com
+   VITE_API_URL=https://infinity-grid-duel.onrender.com
    ```
-   Replace with your actual Render backend URL
+   Use your actual Render backend URL
 
 2. **Commit and Push**
    ```bash
@@ -111,7 +111,7 @@ Now that your frontend is deployed, update the backend CORS:
 ## Testing Your Deployment
 
 1. **Test Backend Health**
-   - Visit: `https://your-backend-url.onrender.com/health`
+   - Visit: `https://infinity-grid-duel.onrender.com/health`
    - Should see: `{"status":"ok","message":"Infinity Grid Duel API is running"}`
 
 2. **Test Frontend**
@@ -172,7 +172,7 @@ CORS_ORIGIN=https://your-app.netlify.app
 
 ### Netlify (Frontend)
 ```
-VITE_API_URL=https://your-backend-url.onrender.com
+VITE_API_URL=https://infinity-grid-duel.onrender.com
 ```
 
 ---

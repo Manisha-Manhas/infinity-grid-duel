@@ -132,7 +132,7 @@ CORS_ORIGIN=https://your-frontend-url.com
 ### Frontend
 Update `frontend/src/api/gameApi.ts`:
 ```typescript
-const API_BASE_URL = 'https://your-backend-url.com';
+const API_BASE_URL = 'https://infinity-grid-duel.onrender.com';
 ```
 
 ---
@@ -151,7 +151,7 @@ const API_BASE_URL = 'https://your-backend-url.com';
 ### Frontend API Errors
 - Verify backend URL is correct in `gameApi.ts`
 - Check backend is running and accessible
-- Test backend health endpoint: `https://your-backend-url.com/health`
+- Test backend health endpoint: `https://infinity-grid-duel.onrender.com/health`
 
 ### Build Failures
 - Check Node.js version compatibility
