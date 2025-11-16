@@ -92,8 +92,44 @@ const GameBoard: React.FC<GameBoardProps> = ({ mode }) => {
     return <div className="loading">Loading game...</div>;
   }
 
+  const getWinnerMessage = () => {
+    if (!gameState.winner) return null;
+    
+    if (gameState.winner === 'draw') {
+      return "It's a Draw!";
+    }
+    
+    if (mode === 'PvAI') {
+      return gameState.winner === 'R' ? '🎉 You Win!' : '🤖 AI Wins!';
+    }
+    
+    return gameState.winner === 'R' ? '🎉 Red Wins!' : '🎉 Green Wins!';
+  };
+
   return (
     <div className="game-board-page">
+      {/* Winner Modal */}
+      {gameState.winner && (
+        <div className="winner-overlay">
+          <div className="winner-modal">
+            <h1 className="winner-title">{getWinnerMessage()}</h1>
+            <p className="winner-subtitle">
+              {gameState.winner === 'draw' 
+                ? 'The board is full with no clear winner!' 
+                : `${gameState.winner === 'R' ? 'Red' : 'Green'} player dominated the board!`}
+            </p>
+            <div className="winner-actions">
+              <button onClick={handleRestart} className="btn-primary">
+                Play Again
+              </button>
+              <button onClick={handleBackToMenu} className="btn-secondary">
+                Back to Menu
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <div className="game-header">
         <button onClick={handleBackToMenu} className="back-button">
           ← Back to Menu
